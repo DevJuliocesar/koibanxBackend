@@ -1,2 +1,0 @@
-# koibanxBackend
-Koibanx Backend Challenge
