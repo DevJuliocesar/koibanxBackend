@@ -1,12 +1,15 @@
 {
   "name": "koibanx-backend-challenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "koibanx backend challenge",
   "main": "app.js",
   "scripts": {
-    "run": "node $NODE_DEBUG_OPTION app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "prod": "nodemon app.js",
+    "test": "jest --detectOpenHandles --runInBand"
   },
-  "author": "",
+  "author": "Dev Julio Cesar",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
