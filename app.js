@@ -8,9 +8,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 const config = require('config');
 mongoose.connect('mongodb://' + config.get('mongodb.address') + '/' + config.get('mongodb.dbname'), { useNewUrlParser: true, useUnifiedTopology: true });
-require('./utils/initializer').init()
+require('./utils/initializer').init();
 
-app.use('/api', require('./routes/stores.route'));
+const routes = require('./routes');
+
+app.use('/api', routes);
 
 // Start the server
 app.listen(config.get('port'));
