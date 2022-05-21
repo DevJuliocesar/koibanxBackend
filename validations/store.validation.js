@@ -21,15 +21,16 @@ const list = checkSchema({
     },
     sort: {
         optional: true,
-        isInt: {
+        isString: {
             options: [['name', 'cuit']],
             errorMessage: 'Sort should be "name" or "cuit"',
         }
     },
     dir: {
         optional: true,
-        isNumeric: {
-            errorMessage: 'Dir should be numeric'
+        isString: {
+            options: [['asc', 'desc']],
+            errorMessage: 'Sort should be "asc" or "desc"',
         }
     },
     skip: {
