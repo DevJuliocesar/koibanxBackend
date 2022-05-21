@@ -1,5 +1,5 @@
 const Store = require('../models/store.model');
 
-exports.getStore = async (q, sort, page = 1, limit = 10) => {
-    return datos = await Store.find(q);
+exports.getStore = async (q, filter = '', sort, dir, skip = 0, max = 10) => {
+    return datos = await Store.find(q).limit(max);
 }
