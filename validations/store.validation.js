@@ -1,6 +1,6 @@
 const { checkSchema } = require('express-validator');
 
-const list = checkSchema({
+exports.list = checkSchema({
     q: {
         optional: true,
         isJSON: {
@@ -36,19 +36,29 @@ const list = checkSchema({
     skip: {
         optional: true,
         isInt: {
-            errorMessage: 'Sort should be "name" or "cuit"',
+            errorMessage: 'Sort should be Int',
         },
         toInt: true
     },
     max: {
         optional: true,
         isInt: {
-            errorMessage: 'Sort should be "name" or "cuit"',
+            errorMessage: 'Sort should be Int',
+        },
+        toInt: true
+    },
+    page: {
+        optional: true,
+        isInt: {
+            errorMessage: 'Page should be Int',
+        },
+        toInt: true
+    },
+    limit: {
+        optional: true,
+        isInt: {
+            errorMessage: 'Limit should be Int',
         },
         toInt: true
     }
-}, ['query'])
-
-module.exports = {
-    list
-}
+}, ['query']);

@@ -4,15 +4,7 @@ const logger = require('../utils/logger');
 
 exports.list = async (req, res, next) => {
     try {
-        const {
-            q,
-            filter,
-            sort,
-            dir,
-            skip,
-            max
-        } = req.query;
-        const stores = await storeService.listStore(q, filter, sort, dir, skip, max);
+        const stores = await storeService.listStore(req.query);
 
         res.status(200).json(stores);
     } catch (err) {
