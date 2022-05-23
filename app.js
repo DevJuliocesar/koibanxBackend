@@ -1,21 +1,33 @@
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const app = require('express')();
 const logger = require('./utils/logger');
-mongoose.Promise = Promise;
-
-const express = require('express')
-const app = express()
-const dotenv = require('dotenv');
-dotenv.config();
-const config = require('config');
-mongoose.connect('mongodb://' + config.get('mongodb.address') + '/' + config.get('mongodb.dbname'), { useNewUrlParser: true, useUnifiedTopology: true });
-require('./utils/initializer').init();
-
+const { port } = require('./config/default');
+const mongoose = require('./config/mongoose');
 const routes = require('./routes');
+const initializer = require('./utils/initializer');
 
+mongoose.connect();
+initializer.init();
+
+// parse body params and attache them to req.body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Mount api routes
 app.use('/api', routes);
 
-// Start the server
-app.listen(config.get('port'));
-logger.info('API initialized on port ' + config.get('port'));
+// Error handler
+app.use((error, req, res) => {
+  res.status(error.status || 500).json({
+    error: {
+      status: error.status || 500,
+      message: error.message || 'Internal Server Error.',
+    },
+  });
+});
 
-module.exports = app
+// Start the server
+app.listen(port);
+logger.info(`API initialized on port ${port}`);
+
+module.exports = app;

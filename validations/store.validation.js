@@ -1,64 +1,64 @@
 const { checkSchema } = require('express-validator');
 
 exports.list = checkSchema({
-    q: {
-        optional: true,
-        isJSON: {
-            errorMessage: 'q is wrong',
-        },
-        customSanitizer: {
-            options: (value) => JSON.parse(value),
-        },
+  q: {
+    optional: true,
+    isJSON: {
+      errorMessage: 'q is wrong',
     },
-    'q.active': {
-        optional: true,
-        isBoolean: {
-            errorMessage: 'Active should be boolean',
-        },
+    customSanitizer: {
+      options: (value) => JSON.parse(value),
     },
-    filter: {
-        optional: true
+  },
+  'q.active': {
+    optional: true,
+    isBoolean: {
+      errorMessage: 'Active should be boolean',
     },
-    sort: {
-        optional: true,
-        isString: {
-            options: [['name', 'cuit']],
-            errorMessage: 'Sort should be "name" or "cuit"',
-        }
+  },
+  filter: {
+    optional: true,
+  },
+  sort: {
+    optional: true,
+    isString: {
+      options: [['name', 'cuit']],
+      errorMessage: 'Sort should be "name" or "cuit"',
     },
-    dir: {
-        optional: true,
-        isString: {
-            options: [['asc', 'desc']],
-            errorMessage: 'Sort should be "asc" or "desc"',
-        }
+  },
+  dir: {
+    optional: true,
+    isString: {
+      options: [['asc', 'desc']],
+      errorMessage: 'Sort should be "asc" or "desc"',
     },
-    skip: {
-        optional: true,
-        isInt: {
-            errorMessage: 'Sort should be Int',
-        },
-        toInt: true
+  },
+  skip: {
+    optional: true,
+    isInt: {
+      errorMessage: 'Sort should be Int',
     },
-    max: {
-        optional: true,
-        isInt: {
-            errorMessage: 'Sort should be Int',
-        },
-        toInt: true
+    toInt: true,
+  },
+  max: {
+    optional: true,
+    isInt: {
+      errorMessage: 'Sort should be Int',
     },
-    page: {
-        optional: true,
-        isInt: {
-            errorMessage: 'Page should be Int',
-        },
-        toInt: true
+    toInt: true,
+  },
+  page: {
+    optional: true,
+    isInt: {
+      errorMessage: 'Page should be Int',
     },
-    limit: {
-        optional: true,
-        isInt: {
-            errorMessage: 'Limit should be Int',
-        },
-        toInt: true
-    }
+    toInt: true,
+  },
+  limit: {
+    optional: true,
+    isInt: {
+      errorMessage: 'Limit should be Int',
+    },
+    toInt: true,
+  },
 }, ['query']);
