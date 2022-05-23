@@ -1,14 +1,10 @@
 const Store = require('../models/store.model');
 
-exports.getStore = async (q = {}, filter = '', sort, dir, skip, max, page = 1, limit = 10) => {
-  skip = skip || (page - 1) * limit;
-  limit = max || limit;
-  const sortObj = sort && dir ? ({ [sort]: dir }) : {};
-
+const addFilter = (filter, q) => {
   if (filter) {
     const rgx = (pattern) => new RegExp(`.*${pattern}.*`);
     const searchRgx = rgx(filter);
-    q = {
+    return {
       ...q,
       $or: [
         { name: { $regex: searchRgx, $options: 'i' } },
@@ -16,7 +12,17 @@ exports.getStore = async (q = {}, filter = '', sort, dir, skip, max, page = 1, l
       ],
     };
   }
+  return q;
+};
+
+exports.list = async (q = {}, filter = '', sort, dir, skip, max, page = 1, limit = 10) => {
+  skip = skip || (page - 1) * limit;
+  limit = max || limit;
+  const sortObj = sort && dir ? ({ [sort]: dir }) : {};
+
+  q = addFilter(filter, q);
+
   return Store.find(q).skip(skip).limit(limit).sort(sortObj);
 };
 
-exports.getCount = async () => Store.find().countDocuments();
+exports.getCount = async (q = {}, filter = '') => Store.find(addFilter(filter, q)).countDocuments();

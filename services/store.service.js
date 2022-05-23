@@ -1,7 +1,11 @@
 const storeRepository = require('../repositories/store.repository');
 const storeMapper = require('../mappers/store.mapper');
 
-exports.listStore = async (parms) => {
+/**
+ * List Store
+ * @param  {} parms
+ */
+exports.list = async (parms) => {
   const {
     q,
     filter,
@@ -12,9 +16,9 @@ exports.listStore = async (parms) => {
   } = parms;
   let { page = 1, limit = 10 } = parms;
 
-  const getStoreDto = storeMapper.list(storeRepository.getStore);
+  const getStoreDto = storeMapper.list(storeRepository.list);
   const data = await getStoreDto(q, filter, sort, dir, skip, max, page, limit);
-  const total = await storeRepository.getCount();
+  const total = await storeRepository.getCount(q, filter);
 
   if (!data || !total) {
     const error = new Error('Error interno');

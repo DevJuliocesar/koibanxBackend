@@ -43,7 +43,12 @@ const mapStoresModelToDto = (model) => {
  */
 const collectionStoresModelsToDto = (stores) => stores.map((store) => mapStoresModelToDto(store));
 
-/* A function that takes a function as a parameter and returns a function. */
+/**
+ * A function that takes a function as a parameter and
+ * returns a collection Stores Models To Dto.
+ *
+ * @param  {} func
+ */
 exports.list = (func) => async (...args) => {
   const result = await func(...args);
   return collectionStoresModelsToDto(result);
