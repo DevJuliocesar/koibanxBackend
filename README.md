@@ -84,6 +84,16 @@ npm run test
 npm run test:cov
 ```
 
+Docker:
+```bash
+# run Develop
+npm run docker:dev
+# run Production
+npm run docker:prod
+# run test
+npm run docker:test
+```
+
 ## Variables de Entorno
 
 Las variables de entorno se pueden encontrar y modificar en el archivo `.env`. Vienen con estos valores predeterminados:
