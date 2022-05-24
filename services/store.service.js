@@ -21,11 +21,6 @@ exports.list = async (parms) => {
   const data = await getStoreDto(q, filter, sort, dir, skip, max, page, limit);
   const total = await storeRepository.getCount(q, filter);
 
-  if (!data || !total) {
-    logger.error('Internal Error in list of Store Service');
-    throw new Error('Internal Error');
-  }
-
   limit = max || limit;
   page = skip ? Math.trunc(skip / limit + 1) : page;
   const pages = Math.ceil(total / limit);
