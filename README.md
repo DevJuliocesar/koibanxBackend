@@ -39,7 +39,7 @@ cp .env.example .env
 # open .env and modify the environment variables (if needed)
 ```
 
-## Table of Contents
+## Tabla de contenido
 
 - [Caracteristicas](#Caracteristicas)
 - [Comandos](#Comandos)
