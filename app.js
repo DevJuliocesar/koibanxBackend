@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 // Error handler
-app.use((error, req, res) => {
+app.use((error, req, res, next) => {
   res.status(error.status || 500).json({
     error: {
       status: error.status || 500,
