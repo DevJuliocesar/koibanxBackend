@@ -54,6 +54,7 @@ const collectionStoresModelsToDto = (stores) => stores.map((store) => mapStoresM
 exports.list = (func) => async (...args) => {
   try {
     const result = await func(...args);
+    if (!result) return null;
     return collectionStoresModelsToDto(result);
   } catch (err) {
     logger.error(err.message || 'Error in list of store mapper');
