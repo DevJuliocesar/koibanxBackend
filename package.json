@@ -7,7 +7,8 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "prod": "nodemon app.js",
-    "test": "jest --detectOpenHandles --runInBand"
+    "test": "jest --detectOpenHandles --runInBand",
+    "test:cov": "jest --detectOpenHandles --runInBand --coverage"
   },
   "author": "Dev Julio Cesar",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "dotenv": "^10.0.0",
     "express": "~4.17.1",
     "express-validator": "^6.12.0",
+    "faker": "^5.5.3",
     "logger": "0.0.1",
     "mongoose": "^5.13.2",
     "winston": "~2.4.0"
@@ -26,6 +28,8 @@
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^28.1.0",
+    "node-mocks-http": "^1.11.0"
   }
 }
