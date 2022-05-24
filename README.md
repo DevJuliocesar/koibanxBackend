@@ -39,6 +39,14 @@ cp .env.example .env
 # open .env and modify the environment variables (if needed)
 ```
 
+## Table of Contents
+
+- [Caracteristicas](#Caracteristicas)
+- [Comandos](#Comandos)
+- [Variables de Entorno](#Variables-de-Entorno)
+- [Estructura del Proyecto](#Estructura-del-Proyecto)
+- [API Endpoints](#API-Endpoints)
+
 ## Caracteristicas
 
 - **NoSQL database**: [MongoDB](https://www.mongodb.com) Modelado de objeto de datos usando [Mongoose](https://mongoosejs.com)
