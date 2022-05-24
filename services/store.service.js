@@ -1,5 +1,6 @@
 const storeRepository = require('../repositories/store.repository');
 const storeMapper = require('../mappers/store.mapper');
+const logger = require('../utils/logger');
 
 /**
  * List Store
@@ -21,9 +22,8 @@ exports.list = async (parms) => {
   const total = await storeRepository.getCount(q, filter);
 
   if (!data || !total) {
-    const error = new Error('Error interno');
-    error.status = 500;
-    throw error;
+    logger.error('Internal Error in list of Store Service');
+    throw new Error('Internal Error');
   }
 
   limit = max || limit;
@@ -37,4 +37,34 @@ exports.list = async (parms) => {
     limit,
     total,
   };
+};
+
+exports.create = async (parms) => {
+  try {
+    const {
+      name,
+      cuit,
+      currentBalance,
+      active,
+      lastSale,
+      concepts,
+    } = parms;
+    const getStoreDto = storeMapper.create(storeRepository.create);
+    const data = await getStoreDto({
+      name,
+      cuit,
+      currentBalance,
+      active,
+      lastSale,
+      concepts,
+    });
+    logger.info(`Store created with id ${data[0].id}`);
+    return {
+      status: 201,
+      message: 'Created Successfully',
+      data,
+    };
+  } catch (err) {
+    throw new Error(err.message || 'Internal Error');
+  }
 };

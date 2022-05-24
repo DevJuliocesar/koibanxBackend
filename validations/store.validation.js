@@ -62,3 +62,45 @@ exports.list = checkSchema({
     toInt: true,
   },
 }, ['query']);
+
+exports.create = checkSchema({
+  name: {
+    optional: false,
+    isString: {
+      errorMessage: 'name should be String',
+    },
+  },
+  cuit: {
+    optional: false,
+    isString: {
+      errorMessage: 'cuit should be String',
+    },
+  },
+  currentBalance: {
+    optional: false,
+    isCurrency: {
+      errorMessage: 'currentBalance should be Currency',
+    },
+  },
+  active: {
+    optional: false,
+    isBoolean: {
+      errorMessage: 'active should be Boolean',
+    },
+    toBoolean: true,
+  },
+  lastSale: {
+    optional: false,
+    isISO8601: {
+      errorMessage: 'lastSale should be Date',
+    },
+    toDate: true,
+  },
+  concepts: {
+    optional: false,
+    isArray: {
+      errorMessage: 'concepts should be Array',
+    },
+    toArray: true,
+  },
+}, ['body']);

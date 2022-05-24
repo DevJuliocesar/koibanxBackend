@@ -1,3 +1,5 @@
+const logger = require('../utils/logger');
+
 const formatterPeso = new Intl.NumberFormat('es-CO', {
   style: 'currency',
   currency: 'COP',
@@ -50,6 +52,21 @@ const collectionStoresModelsToDto = (stores) => stores.map((store) => mapStoresM
  * @param  {} func
  */
 exports.list = (func) => async (...args) => {
-  const result = await func(...args);
-  return collectionStoresModelsToDto(result);
+  try {
+    const result = await func(...args);
+    return collectionStoresModelsToDto(result);
+  } catch (err) {
+    logger.error(err.message || 'Error in list of store mapper');
+    throw new Error(err.message || 'Error undefined');
+  }
+};
+
+exports.create = (func) => async (...args) => {
+  try {
+    const result = await func(...args);
+    return collectionStoresModelsToDto([result]);
+  } catch (err) {
+    logger.error(err.message || 'Error in create of store mapper');
+    throw new Error(err.message || 'Error undefined');
+  }
 };

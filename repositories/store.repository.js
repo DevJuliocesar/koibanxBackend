@@ -26,3 +26,5 @@ exports.list = async (q = {}, filter = '', sort, dir, skip, max, page = 1, limit
 };
 
 exports.getCount = async (q = {}, filter = '') => Store.find(addFilter(filter, q)).countDocuments();
+
+exports.create = async (parms) => Store.create(parms);
