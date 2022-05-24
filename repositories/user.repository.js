@@ -2,10 +2,11 @@ const User = require('../models/user.model');
 
 exports.login = async (username, password) => {
   const user = await this.getByUserName(username);
-  if (!user) {
-    return null;
+  if (user && user.verifyPassword(password)) {
+    return user;
   }
-  return user.verifyPassword(password);
+
+  return null;
 };
 
 exports.getByUserName = async (username) => User.findOne({ username });

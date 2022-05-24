@@ -57,7 +57,7 @@ exports.list = (func) => async (...args) => {
     return collectionStoresModelsToDto(result);
   } catch (err) {
     logger.error(err.message || 'Error in list of store mapper');
-    throw new Error(err.message || 'Error undefined');
+    throw new Error(err.message || 'Internal Error');
   }
 };
 
@@ -67,6 +67,6 @@ exports.create = (func) => async (...args) => {
     return collectionStoresModelsToDto([result]);
   } catch (err) {
     logger.error(err.message || 'Error in create of store mapper');
-    throw new Error(err.message || 'Error undefined');
+    throw new Error(err.message || 'Internal Error');
   }
 };
