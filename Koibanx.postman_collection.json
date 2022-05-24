@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "3e48ba29-41d6-4db0-a0e8-b7fe7bba494b",
+		"name": "Koibanx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Stores",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/stores?sort=name&dir=desc&max=10&page=1&limit=10",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"active\": true}",
+							"disabled": true
+						},
+						{
+							"key": "max",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "name"
+						},
+						{
+							"key": "dir",
+							"value": "desc"
+						},
+						{
+							"key": "filter",
+							"value": "prueba3",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "17",
+							"disabled": true
+						},
+						{
+							"key": "max",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Stores",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Prueba4\",\r\n    \"cuit\": \"86-27933427-2\",\r\n    \"currentBalance\": \"1234\",\r\n    \"active\": true,\r\n    \"lastSale\": \"2018-10-15 14:00:00\",\r\n    \"concepts\": [\r\n        1,\r\n        2,\r\n        3,\r\n        \"dato2\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/stores",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
