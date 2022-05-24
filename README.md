@@ -14,7 +14,7 @@ Registrandolo en la base de datos MongoDB, la API cuenta con las siguientes func
 - Seeder para la creación del usuario inicial y para los Comercios
 - Manejador de errores
 - Test de Integración en Postman
-- Docker
+- Docker support
 
 
 ## Instalación
