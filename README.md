@@ -25,6 +25,19 @@ Clonar el repo:
 git clone https://github.com/DevJuliocesar/koibanxBackend.git
 cd koibanxBackend
 ```
+### Instalación Docker
+
+
+```bash
+# Run Docker Develop
+npm run docker:dev
+# Run Docker Test
+npm run docker:test
+# Run Docker Prod
+npm run docker:prod
+```
+
+### Instalación Manual
 
 Instalar las dependencias:
 
